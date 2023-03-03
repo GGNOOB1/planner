@@ -5,6 +5,9 @@ import {
   MinLength,
   IsNotEmpty,
   IsNumber,
+  IsLatitude,
+  IsLongitude,
+  IsPositive,
 } from 'class-validator';
 
 export class CreateEventDto {
@@ -15,8 +18,9 @@ export class CreateEventDto {
   description: string;
 
   @IsNotEmpty()
-  @IsString()
-  userId: string;
+  @IsNumber()
+  @IsPositive()
+  userId: number;
 
   @IsNotEmpty()
   @IsISO8601()
@@ -26,10 +30,12 @@ export class CreateEventDto {
   @IsString()
   locationName: string;
 
+  @IsLatitude({ message: 'latitude value is invalid' })
   @IsNotEmpty()
   @IsNumber()
   latitude: number;
 
+  @IsLongitude({ message: 'longitude value is invalid' })
   @IsNotEmpty()
   @IsNumber()
   longitude: number;
