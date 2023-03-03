@@ -1,10 +1,4 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  OneToOne,
-  JoinColumn,
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm';
 
 import { Event } from './events.entity';
 
@@ -19,7 +13,6 @@ export class Location {
   @Column()
   longitude: number;
 
-  @JoinColumn()
   @OneToOne(() => Event, (event) => event.location)
   event: Event;
 }
