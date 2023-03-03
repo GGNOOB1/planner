@@ -19,7 +19,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     UsersModule,
     JwtModule.register({
       privateKey: process.env.JWT_SECRET_KEY,
-      signOptions: { expiresIn: '1h' },
+      signOptions: { expiresIn: '15m' },
     }),
   ],
   providers: [AuthService, UsersService, LocalStrategy, JwtStrategy],
