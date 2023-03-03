@@ -1,9 +1,16 @@
-import { Controller, HttpCode, HttpStatus, UseGuards } from '@nestjs/common';
-import { Post, Put, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  HttpCode,
+  HttpStatus,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
+import { Post, Body } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport/dist';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
-import { UpdateUserDto } from './dtos/update-user.dto';
+
+import { UpdatePasswordDto } from './dtos/updatePassword-user.dto';
 
 @Controller('/api/v1/users')
 export class UsersController {
@@ -15,8 +22,8 @@ export class UsersController {
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @Put('/:id')
-  updateUser(@Param('id') id: number, @Body() updatedUser: UpdateUserDto) {
-    return this.usersService.update(id, updatedUser);
+  @Post('/updatePassword')
+  updatePassword(@Req() req, @Body() body: UpdatePasswordDto) {
+    return this.usersService.updatePassword(req.user, body);
   }
 }
