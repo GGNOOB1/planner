@@ -1,10 +1,4 @@
-import {
-  Controller,
-  HttpCode,
-  HttpStatus,
-  Req,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Req, UseGuards } from '@nestjs/common';
 import { Post, Body } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport/dist';
 import { CreateUserDto } from './dtos/create-user.dto';
@@ -24,6 +18,8 @@ export class UsersController {
   @UseGuards(AuthGuard('jwt'))
   @Post('/updatePassword')
   updatePassword(@Req() req, @Body() body: UpdatePasswordDto) {
-    return this.usersService.updatePassword(req.user, body);
+    console.log(req.user, body);
+    const user = req.user;
+    return this.usersService.updatePassword(user, body);
   }
 }

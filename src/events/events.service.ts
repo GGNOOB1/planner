@@ -157,6 +157,12 @@ export class EventsService {
 
   async update(id: number, updatedEvent: UpdateEventDto) {
     try {
+      const user = await this.userService.findById(updatedEvent.userId);
+
+      if (!user) {
+        throw new BadRequestException('this user dont exist');
+      }
+
       const day = new Date(updatedEvent.dateTime).getDay();
       const weekDay = this.daysWeek[day];
       updatedEvent.weekDay = weekDay;
@@ -195,8 +201,11 @@ export class EventsService {
         throw new NotFoundException('event not found');
       }
 
-      return this.eventRepository.remove(event);
-    } catch (e) {}
+      await this.eventRepository.remove(event);
+      return null;
+    } catch (e) {
+      return formatError(e);
+    }
   }
 
   async delete(weekDay: string) {
