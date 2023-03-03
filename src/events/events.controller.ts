@@ -14,6 +14,7 @@ import { AuthGuard } from '@nestjs/passport';
 
 import { CreateEventDto } from './dtos/create-event.dto';
 import { UpdateEventDto } from './dtos/update-event.dto';
+import { UpdateLocationDto } from './dtos/update-location.dto';
 import { EventsService } from './events.service';
 import { QueryEvent } from './interfaces/QueryEvent';
 
@@ -63,6 +64,15 @@ export class EventsController {
   @Put('/:id')
   updateEvent(@Param('id') id, @Body() body: UpdateEventDto) {
     return this.eventService.update(id, body);
+  }
+
+  @Put('/:id/location')
+  updateEventByLocation(
+    @Param('id') eventId: number,
+    @Body()
+    locations: UpdateLocationDto,
+  ) {
+    return this.eventService.updateLocation(eventId, locations);
   }
 
   @Delete('/:id')
