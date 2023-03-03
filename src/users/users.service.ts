@@ -2,8 +2,10 @@ import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dtos/create-user.dto';
-import { UpdateUserDto } from './dtos/update-user.dto';
+import { UpdatePasswordDto } from './dtos/updatePassword-user.dto';
 import { User } from './users.entity';
+import * as bcrypt from 'bcrypt';
+import { formatError } from 'src/helpers/formatErrors';
 
 @Injectable()
 export class UsersService {
@@ -18,27 +20,60 @@ export class UsersService {
       }
 
       const user = await this.userRepository.create(createdUserDto);
-      return await this.userRepository.save(user);
+      await this.userRepository.save(user);
+      return {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        birthDate: user.birthDate,
+        city: user.city,
+        country: user.country,
+        email: user.email,
+      };
     } catch (e) {
-      throw new BadRequestException(e.message);
+      return formatError(e);
     }
   }
 
   async findOne(email: string) {
-    const user = await this.userRepository.findOneBy({ email });
+    try {
+      const user = await this.userRepository.findOneBy({ email });
 
-    return user;
+      return user;
+    } catch (e) {}
   }
 
   async findById(id: number) {
-    const user = await this.userRepository.findOneBy({ id });
+    try {
+      const user = await this.userRepository.findOneBy({ id });
 
-    return user;
+      return user;
+    } catch (e) {
+      return null;
+    }
   }
 
-  async update(id: number, updatedUser: UpdateUserDto) {
-    const user = await this.findById(id);
-    this.userRepository.merge(user, updatedUser);
-    return await this.userRepository.save(user);
+  async updatePassword(userData, body: UpdatePasswordDto) {
+    try {
+      const user = await this.findOne(userData.email);
+      const passwordEqual = await bcrypt.compare(body.password, user.password);
+
+      if (body.password !== body.passwordConfirm) {
+        throw new BadRequestException(
+          'The passwords are different, the confirm password needs to be the same as the password',
+        );
+      }
+      if (passwordEqual) {
+        throw new BadRequestException(
+          'the new password is the same as the current, enter a different from the current',
+        );
+      }
+
+      const newPassword = await bcrypt.hash(body.password, 12);
+      user.password = newPassword;
+      await this.userRepository.save(user);
+    } catch (e) {
+      return formatError(e);
+    }
   }
 }
