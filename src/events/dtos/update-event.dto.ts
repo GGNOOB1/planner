@@ -4,6 +4,8 @@ import {
   MaxLength,
   MinLength,
   IsNotEmpty,
+  IsNumber,
+  IsPositive,
 } from 'class-validator';
 
 export class UpdateEventDto {
@@ -14,8 +16,9 @@ export class UpdateEventDto {
   description: string;
 
   @IsNotEmpty()
-  @IsString()
-  userId: string;
+  @IsNumber()
+  @IsPositive()
+  userId: number;
 
   @IsNotEmpty()
   @IsISO8601()
