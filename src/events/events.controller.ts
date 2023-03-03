@@ -9,6 +9,8 @@ import {
   Body,
   NotFoundException,
 } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common/decorators';
+import { AuthGuard } from '@nestjs/passport';
 
 import { CreateEventDto } from './dtos/create-event.dto';
 import { UpdateEventDto } from './dtos/update-event.dto';
@@ -16,6 +18,7 @@ import { EventsService } from './events.service';
 import { QueryEvent } from './interfaces/QueryEvent';
 
 @Controller('api/v1/events')
+@UseGuards(AuthGuard('jwt'))
 export class EventsController {
   constructor(private eventService: EventsService) {}
 
