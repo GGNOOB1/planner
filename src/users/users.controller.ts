@@ -18,7 +18,6 @@ export class UsersController {
   @UseGuards(AuthGuard('jwt'))
   @Post('/updatePassword')
   updatePassword(@Req() req, @Body() body: UpdatePasswordDto) {
-    console.log(req.user, body);
     const user = req.user;
     return this.usersService.updatePassword(user, body);
   }
