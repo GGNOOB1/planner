@@ -8,6 +8,7 @@ import {
   Query,
   Body,
   NotFoundException,
+  HttpStatus,
 } from '@nestjs/common';
 import { UseGuards } from '@nestjs/common/decorators';
 import { AuthGuard } from '@nestjs/passport';
@@ -17,6 +18,7 @@ import { UpdateEventDto } from './dtos/update-event.dto';
 import { UpdateLocationDto } from './dtos/update-location.dto';
 import { EventsService } from './events.service';
 import { QueryEvent } from './interfaces/QueryEvent';
+import { HttpCode } from '@nestjs/common';
 
 @Controller('api/v1/events')
 @UseGuards(AuthGuard('jwt'))
@@ -45,11 +47,6 @@ export class EventsController {
     );
   }
 
-  @Delete()
-  deleteEventByWeekDay(@Query('dayOfTheWeek') dayWeek: string) {
-    return this.eventService.delete(dayWeek);
-  }
-
   @Get('/:id')
   async getEventById(@Param('id') id: string) {
     const event = await this.eventService.findById(parseInt(id));
@@ -76,7 +73,14 @@ export class EventsController {
   }
 
   @Delete('/:id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   deleteEventById(@Param('id') id: number) {
     return this.eventService.deleteOne(id);
+  }
+
+  @Delete()
+  @HttpCode(HttpStatus.NO_CONTENT)
+  deleteEventByWeekDay(@Query('dayOfTheWeek') dayWeek: string) {
+    return this.eventService.delete(dayWeek);
   }
 }
