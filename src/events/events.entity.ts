@@ -17,7 +17,7 @@ export class Event {
   @Column()
   description: string;
   @Column()
-  userId: string;
+  userId: number;
   @Column()
   dateTime: Date;
   @OneToOne(() => Location, (location) => location.event)
