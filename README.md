@@ -1,36 +1,59 @@
+# Api planner
+
+The planner's API aims to help the client to organize his week and his tasks and at what times they happen, this will happen through user routes and events that will be requested through http GET, POST, PUT and DELETE methods.
+
+[Deploy](https://api-planner.onrender.com)
+
+## Info
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+   <img src="http://img.shields.io/static/v1?label=Node&message=18.12.1&color=green&style=for-the-badge&logo=node.js"/>
+   <img src="http://img.shields.io/static/v1?label=MongoDB&message=6.0.2&color=green&style=for-the-badge&logo=mongodb"/>
+   <img src="http://img.shields.io/static/v1?label=express&message=4.18.2&color=blue&style=for-the-badge&logo=express"/>
+   <img src="http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=green&style=for-the-badge"/>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Running Locally
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Clone the project
 
-## Description
+```bash
+  git clone https://link-para-o-projeto
+```
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Enter the project directory
+
+```bash
+  cd my-project
+```
+
+Install the dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
 
 ## Installation
+
+Install dependencies of api-planner with npm
 
 ```bash
 $ npm install
 ```
+
+## Environment variables
+
+To run this project, you will need to add the following environment variables to your .env
+
+`JWT_SECRET_KEY=<secret_key>`
+
+You will need to replace the <host> and <password>
 
 ## Running the app
 
@@ -45,6 +68,95 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Resources
+
+- Node.JS v.18.12.1
+
+- Dependencies:
+
+  - @nestjs/common: ^9.0.0,
+  - @nestjs/config: ^2.3.1,
+  - @nestjs/core: ^9.0.0,
+  - @nestjs/jwt: ^10.0.2,
+  - @nestjs/passport: ^9.0.3,
+  - @nestjs/platform-express: ^9.0.0,
+  - @nestjs/typeorm: ^9.0.1,
+  - bcrypt: ^5.1.0,
+  - class-transformer: ^0.5.1,
+  - class-validator: ^0.14.0,
+  - joi: ^17.8.3,
+  - lodash: ^4.17.21,
+  - moment: ^2.29.4,
+  - mongodb: ^3.7.3,
+  - passport-jwt: ^4.0.1,
+  - passport-local: ^1.0.0,
+  - reflect-metadata: ^0.1.13,
+  - rxjs: ^7.8.0,
+  - sqlite3: ^5.1.4,
+  - typeorm: ^0.3.12
+
+- Development dependencies:
+  - dotenv v16.0.,
+  - @nestjs/cli: ^9.0.0,
+  - @nestjs/schematics: ^9.0.0,
+  - @nestjs/swagger: ^6.2.1,
+  - @nestjs/testing: ^9.0.0,
+  - @types/express: ^4.17.13,
+  - @types/jest: 29.2.4,
+  - @types/node: 18.11.18,
+  - @types/passport-local: ^1.0.35,
+  - @types/supertest: ^2.0.11,
+  - @typescript-eslint/eslint-plugin: ^5.0.0,
+  - @typescript-eslint/parser: ^5.0.0,
+  - eslint: ^8.0.1,
+  - eslint-config-prettier: ^8.3.0,
+  - eslint-plugin-prettier: ^4.0.0,
+  - jest: 29.3.1,
+  - prettier: ^2.3.2,
+  - source-map-support: ^0.5.20,
+  - supertest: ^6.1.3,
+  - ts-jest: 29.0.3,
+  - ts-loader: ^9.2.3,
+  - ts-node: ^10.0.0,
+  - tsconfig-paths: 4.1.1,
+  - typescript: ^4.7.4
+
+## Requirements
+
+[Node.js](https://nodejs.org/en/)
+
+[Sqlite](https://www.sqlite.org/index.html)
+
+[Typescript](https://www.typescriptlang.org/)
+
+## Swagger
+
+Detailed documentation of each api route
+
+To access the documentation access the route:
+
+- /swagger
+
+obs: Run Postman locally for more efficiency
+
+## Routes
+
+1. events
+   - POST /api/v1/events
+   - GET /api/v1/events
+   - DELETE /api/v1/events/:id
+   - GET /api/v1/events/:id
+   - GET /api/v1/events?dayOfTheWeek=**\***?limt=?offset=
+   - PUT /api/v1/events/:id
+   - PUT /api/v1/events/:id/location
+   - DELETE /api/v1/events?dayOfTheWeek=**\***
+2. users
+   - POST /api/v1/users/signUp
+   - POST /api/v1/users/signIn
+   - POST /api/v1/users/updatePassword
+   - DELETE /api/v1/users/:id
+   - PUT /api/v1/users/:id
+
 ## Test
 
 ```bash
@@ -58,16 +170,4 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Copyright :copyright: 2023 - 3° Projeto Compass
