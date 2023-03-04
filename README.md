@@ -7,10 +7,10 @@ The planner's API aims to help the client to organize his week and his tasks and
 ## Info
 
 <p align="center">
-   <img src="http://img.shields.io/static/v1?label=Node&message=18.12.1&color=green&style=for-the-badge&logo=node.js"/>
-   <img src="http://img.shields.io/static/v1?label=MongoDB&message=6.0.2&color=green&style=for-the-badge&logo=mongodb"/>
-   <img src="http://img.shields.io/static/v1?label=express&message=4.18.2&color=blue&style=for-the-badge&logo=express"/>
-   <img src="http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=green&style=for-the-badge"/>
+   <img src="http://img.shields.io/static/v1?label=Typescript&message=4.7.4&color=blue&style=for-the-badge&logo=typescript"/>
+   <img src="http://img.shields.io/static/v1?label=sqlite&message=5.1.4&color=cyan&style=for-the-badge&logo=sqlite"/>
+   <img src="http://img.shields.io/static/v1?label=NestJS&message=9.0.0&color=red&style=for-the-badge&logo=nestjs"/>
+   <img src="http://img.shields.io/static/v1?label=STATUS&message=FINISHING&color=orange&style=for-the-badge"/>
 </p>
 
 ## Running Locally
@@ -140,6 +140,8 @@ To access the documentation access the route:
 obs: Run Postman locally for more efficiency
 
 ## Routes
+
+Some routes have authentication, so it will be necessary to put the geraldo token when logging into the bearer token in the header
 
 1. events
    - POST /api/v1/events
