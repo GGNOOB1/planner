@@ -2,7 +2,7 @@
 
 The planner's API aims to help the client to organize his week and his tasks and at what times they happen, this will happen through user routes and events that will be requested through http GET, POST, PUT and DELETE methods.
 
-[Deploy](https://api-planner.onrender.com)
+[Deploy](https://planner-vszn.onrender.com)
 
 ## Info
 
